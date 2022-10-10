@@ -3,17 +3,17 @@ export const URL = 'https://api.openweathermap.org/data/2.5/forecast?'
 
 export const CITY_LIST = [
   {
-    name: 'Ottawa',
+    name: 'Calgary',
     lon: -114.0853,
     lat: 51.0501,
   },
   {
-    name: 'Moscow',
+    name: 'Seoul',
     lon: 126.9778,
     lat: 37.5683,
   },
   {
-    name: 'Tokyo',
+    name: 'Munich',
     lon: 11.5755,
     lat: 48.1374,
   },

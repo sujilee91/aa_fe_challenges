@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { CITY_LIST } from './const'
-import { CityTab, WeatherCard } from './Components'
+import { CityTab, WeatherCard } from './components'
 import { useWeatherEffect } from './functions/fetchData'
 import './styles.less'
-import { ReactComponent as WeatherSVGs } from './assets/weathers.svg'
+import { ReactComponent as WeatherSVGs } from './asstes/weathers.svg'
 
 const App: React.FC = (): JSX.Element => {
   const [selectedCity, setSelectedCity] = useState(CITY_LIST[0])
@@ -13,7 +13,7 @@ const App: React.FC = (): JSX.Element => {
     <div className="main">
       <WeatherSVGs />
       <CityTab selectedCity={selectedCity} setSelectedCity={setSelectedCity} />
-      <WeatherCard weatherData={data} />
+      <WeatherCard weatherData={data} loading={loading} error={error} />
     </div>
   )
 }

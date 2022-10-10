@@ -10,8 +10,7 @@
 @large: ~'only screen and (min-width: @{screen-lg-min})';
 @desktop: ~'only screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})';
 @tablet: ~'only screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})';
-@mobile: ~'only screen and (max-width: @{screen-xs-max})';
-
+@mobile: ~'only screen and (min-width: @{screen-xs-min}) and (max-width: @{screen-xs-max})';
 @temp-font: 'Teko';
 @reg-font: 'Montserrat';
 
@@ -28,12 +27,6 @@
 }
 
 #font-size() {
-  sm-date: 2.5rem;
-  md-date: 3rem;
-  sm-temp: 3rem;
-  md-temp: 5rem;
-  title: 3.2rem;
-
   .main(@size: 3.3rem) {
     @media @large {
       font-size: @size;
@@ -42,10 +35,10 @@
       font-size: 1.8rem;
     }
     @media @tablet {
-      font-size: 1.8rem;
+      font-size: 2.5rem;
     }
     @media @mobile {
-      font-size: 1.2rem;
+      font-size: 2rem;
     }
   }
 }

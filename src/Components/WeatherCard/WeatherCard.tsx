@@ -5,12 +5,23 @@ import { WEATHER_ICON } from '../../const'
 import { WeatherIcon } from '../WeatherIcon'
 import { WeatherCardProps } from './types'
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
-  if (weatherData === null) return null
+const WeatherCard: React.FC<WeatherCardProps> = ({
+  weatherData,
+  loading,
+  error = 'Something went wrong!',
+}) => {
+  if (loading)
+    return (
+      <div className="wrapper">
+        <div className="loader"> Loading...</div>
+      </div>
+    )
+
+  if (weatherData === null || error)
+    return <div className="error"> Sorry! {error}</div>
 
   return (
     <div className="wrapper">
-      {/*Comment: I thnk you can remove this check caue of line 10*/}
       {weatherData.current ? (
         <>
           <div className="box today">
@@ -19,7 +30,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
               <WeatherIcon id={WEATHER_ICON[weatherData.current.icon]} />
               <div>
                 <div className="temp">
-                  {/* <span>{weatherData.current.temp}°</span> */}
+                  <span>{weatherData.current.temp}°</span>
                 </div>
                 <div className="text">{weatherData.current.weather}</div>
               </div>
@@ -32,8 +43,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
                   className={`box future_col_${index + 1} future-info`}
                   key={index}
                 >
-                  <div className="text future-date">{date}</div>
+                  <div className="future-date">{date}</div>
                   <WeatherIcon id={WEATHER_ICON[icon]} />
+                  <div className="future-temp">{temp}°</div>
                 </div>
               )
             })}

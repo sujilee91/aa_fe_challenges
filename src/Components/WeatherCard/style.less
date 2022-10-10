@@ -9,8 +9,9 @@
 
   display: grid;
   grid-template-rows: [row] auto [row] auto;
-  width: 50vw;
+  grid-template-columns: [col] auto;
   border-radius: 0.8rem;
+  width: 80vw;
 
   @media @large {
     border-radius: 1.2rem;
@@ -19,6 +20,7 @@
 
   @media @large, @desktop {
     grid-template-columns: [col] auto [col] auto [col];
+    width: 50vw;
   }
 }
 
@@ -30,42 +32,56 @@
   flex-direction: column;
   align-items: center;
   padding: 2.2%;
+  font-size: 2.5rem;
 
   .date {
-    #font-size.main();
+    font-size: 4rem;
+    padding: 2rem;
 
     @media @large {
-      padding: 2.5rem;
+      font-size: 3.3rem;
+    }
+    @media @desktop {
+      font-size: 1.8rem;
+    }
+    @media @tablet {
+      font-size: 2.5 rem;
+    }
+
+    @media @large {
+      padding-top: 2.5rem;
     }
     @media @desktop {
       padding: 1.3rem;
     }
-    padding: 2rem;
   }
 
   .info-wrapper {
+    #font-size.main();
+
     display: flex;
     justify-content: center;
     align-items: center;
-    #font-size.main();
+    width: 16rem;
+
     @media @large {
       width: 32rem;
-      padding-bottom: 3rem;
+      padding: 2.5rem 0;
     }
     @media @desktop {
       padding-bottom: 1.5rem;
     }
-    width: 16rem;
   }
 
   .temp {
+    .temp-font(4.5rem, 5.5rem);
+
     @media @large {
-      .temp(9.5rem, 7.5rem);
+      .temp-font(9.5rem, 7.5rem);
     }
     @media @desktop {
-      .temp(5.5rem, 4rem);
+      .temp-font(5.5rem, 4rem);
     }
-    .temp(4.5rem, 7.5rem);
   }
 
   .icon-container {
@@ -75,28 +91,21 @@
 
 .future {
   display: grid;
-  font-size: #font-size[sm-date];
+  font-size: 2.5rem;
   text-align: center;
   grid-column: col / span 4;
 
   @media @tablet, @mobile {
     grid-template-columns: none;
-    .future-info {
-      .border-style(border-bottom);
-    }
   }
 
   .future-info {
-    padding: 2.2rem;
-
     .future_col_(1);
     .future_col_(2);
     .future_col_(3);
     .future_col_(4);
 
-    @media @large {
-      padding: 2.2rem;
-    }
+    padding: 2.2rem;
 
     @media @desktop {
       padding: 1.2rem;
@@ -109,20 +118,16 @@
     }
 
     @media @tablet, @mobile {
-      &:first-child {
-        .border-style(border-bottom);
+      &:not(:first-child) {
+        .border-style(border-top);
       }
     }
-  }
-
-  .text {
-    padding: 0.5rem;
   }
 
   .icon-container {
     .icon-size();
     @media @large {
-      padding: 1.5rem 0;
+      padding: 1rem 0;
     }
 
     padding: 0.5rem;
@@ -131,16 +136,32 @@
   .future-temp {
     font-family: @temp-font;
     color: #colors[font];
+
     font-size: 2.2rem;
     @media @large {
-      font-size: 4rem;
-      line-height: 4rem;
+      .temp-font();
+    }
+    @media @tablet, @mobile {
+      .temp-font(4rem, 5.5rem);
     }
   }
 
   .future-date {
+    padding: 0.5rem;
     @media @desktop {
       font-size: 1.3rem;
     }
   }
+}
+
+.loader,
+.error {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: col / span 2;
+  grid-row: row / span 2;
+  min-height: 10rem;
+  margin: 2rem;
 }

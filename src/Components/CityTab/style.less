@@ -7,7 +7,6 @@ button {
   background-color: transparent;
   appearance: none;
   font-family: @reg-font;
-  margin: 3.9rem 1.3rem;
 
   #font-size.main();
 
@@ -21,15 +20,18 @@ button {
     margin: 1.9rem 1.3rem;
   }
   @media @mobile {
-    margin: 1.9rem 1.3rem;
+    margin: 1.3rem 1rem;
   }
 }
 
 .tab-wrapper {
   display: flex;
   justify-content: space-around;
-  //  min-height: calc(100vh * 1 / 7);
   min-width: calc(100vw * 10.3 / 25);
+
+  @media @mobile {
+    flex-direction: column;
+  }
 }
 
 .selected {

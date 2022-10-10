@@ -52,13 +52,16 @@ const getURL = ({ lon, lat }) =>
 const handleDataObject = (data: ListDataType) => {
   const weatherData = { ...data.weather[0] }
 
-  const setDate = (timestamp: number, date: string) =>
-    moment
-      .unix(timestamp)
-      .utc()
-      .isSame(moment(new Date().valueOf()).utc(), 'day')
+  const DAY_TO_SECOUNDS = 28800
+
+  const setDate = (timestamp: number, date: string) => {
+    console.log(timestamp, 'ts')
+    var sec = moment(new Date().valueOf()).utc().unix()
+
+    return timestamp - sec <= DAY_TO_SECOUNDS
       ? 'Today'
       : moment(date).format('ddd')
+  }
 
   return {
     date: setDate(data.dt, data.dt_txt),
@@ -76,6 +79,7 @@ const handleFetchedData = (listdata: Array<ListDataType>) => {
 
   for (let i = 0; i < listdata.length; i = i + 8) {
     if (i === 0) {
+      console.log(listdata[i])
       dateObj.current = handleDataObject(listdata[i])
     } else {
       dateObj.future.push(handleDataObject(listdata[i]))
@@ -96,9 +100,8 @@ export const useWeatherEffect = (selectedCity) => {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error(
-            `This is an HTTP error: The status is ${response.status}`,
-          )
+          console.log(response, 'res')
+          throw new Error(`Fetch data Fail : ${response.status}`)
         }
         return response.json()
       })

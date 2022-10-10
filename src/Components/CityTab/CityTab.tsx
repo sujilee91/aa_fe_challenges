@@ -4,13 +4,6 @@ import { CityTabProps } from './types'
 import { CITY_LIST } from '../../const'
 import './style.less'
 
-// Comment: whats this for
-enum CityNames {
-  'Ottawa',
-  'Tokyo',
-  'Moscow',
-}
-
 const CityTab: React.FC<CityTabProps> = ({ selectedCity, setSelectedCity }) => {
   const isSelectedCity = (name: string) => name === selectedCity.name
 
