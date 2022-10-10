@@ -1,0 +1,47 @@
+.temp(@size: 4rem, @line-height: 4rem) {
+  font-family: @temp-font;
+  font-size: @size;
+  color: #colors[font];
+  line-height: @line-height;
+}
+
+.border-style(@property: border) {
+  @media @large {
+    @{property}: 0.5rem solid white;
+  }
+  @media @desktop {
+    @{property}: 0.3rem solid white;
+  }
+
+  @{property}: 0.2rem solid white;
+}
+
+.icon-size(@size: 7rem) {
+  @media @large {
+    height: @size;
+  }
+  @media @desktop {
+    height: calc(@size / 1.8);
+  }
+  @media @tablet, @mobile {
+    height: 3rem;
+  }
+
+  svg {
+    width: 95%;
+    height: 95%;
+  }
+}
+
+.future_col_(@i) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  &:nth-child(@{i}) {
+    @media @large, @desktop {
+      grid-column: col @i / span 1;
+      grid-row: row 2;
+    }
+  }
+}

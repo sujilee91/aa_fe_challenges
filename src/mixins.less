@@ -1,0 +1,51 @@
+@screen-xs-min: 351px;
+@screen-sm-min: 721px;
+@screen-md-min: 961px;
+@screen-lg-min: 1441px;
+
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+
+@large: ~'only screen and (min-width: @{screen-lg-min})';
+@desktop: ~'only screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})';
+@tablet: ~'only screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})';
+@mobile: ~'only screen and (max-width: @{screen-xs-max})';
+
+@temp-font: 'Teko';
+@reg-font: 'Montserrat';
+
+#colors() {
+  blue: #5fb0e8;
+  font: #333339;
+  background: #eef6fb;
+  dark: #000052;
+}
+
+#font-weight() {
+  light: 200;
+  bold: 600;
+}
+
+#font-size() {
+  sm-date: 2.5rem;
+  md-date: 3rem;
+  sm-temp: 3rem;
+  md-temp: 5rem;
+  title: 3.2rem;
+
+  .main(@size: 3.3rem) {
+    @media @large {
+      font-size: @size;
+    }
+    @media @desktop {
+      font-size: 1.8rem;
+    }
+    @media @tablet {
+      font-size: 1.8rem;
+    }
+    @media @mobile {
+      font-size: 1.2rem;
+    }
+  }
+}
