@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconName } from '../../types'
+import { IconName } from '../../../types'
 
 type WeatherIconProps = {
   id: IconName
