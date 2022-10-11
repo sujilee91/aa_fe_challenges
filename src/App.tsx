@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { ReactComponent as WeatherSVGs } from './Asstes/weathers.svg'
+import { ReactComponent as WeatherSVGs } from './Assets/weathers.svg'
 import { CityTab, WeatherCard } from './Components'
 import { CITY_LIST } from './const'
 import { useWeatherEffect } from './functions/fetchData'
