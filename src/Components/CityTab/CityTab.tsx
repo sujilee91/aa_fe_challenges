@@ -28,6 +28,7 @@ const CityTab: React.FC<CityTabProps> = ({ selectedCity, setSelectedCity }) => {
           className={`${
             isSelectedCity(city.name) ? 'selected bold' : 'text light'
           }`}
+          data-testid={city.name}
         >
           {city.name.toUpperCase()}
         </button>

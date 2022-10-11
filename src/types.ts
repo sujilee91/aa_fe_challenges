@@ -38,7 +38,7 @@ interface DateSet {
 }
 
 export type WeatherDataType = {
-  current: DateSet | null
+  current: DateSet
   future: Array<DateSet>
 }
 

@@ -12,6 +12,7 @@
   grid-template-columns: [col] auto;
   border-radius: 0.8rem;
   width: 80vw;
+  margin-bottom: 3rem;
 
   @media @large {
     border-radius: 1.2rem;
@@ -35,24 +36,21 @@
   font-size: 2.5rem;
 
   .date {
-    font-size: 4rem;
     padding: 2rem;
 
     @media @large {
       font-size: 3.3rem;
+      padding-top: 2.5rem;
     }
     @media @desktop {
       font-size: 1.8rem;
+      padding: 1.3rem;
     }
     @media @tablet {
       font-size: 2.5 rem;
     }
-
-    @media @large {
-      padding-top: 2.5rem;
-    }
-    @media @desktop {
-      padding: 1.3rem;
+    @media @mobile {
+      font-size: 4rem;
     }
   }
 
@@ -63,6 +61,7 @@
     justify-content: center;
     align-items: center;
     width: 16rem;
+    padding-bottom: 2.2rem;
 
     @media @large {
       width: 32rem;
@@ -164,4 +163,8 @@
   grid-row: row / span 2;
   min-height: 10rem;
   margin: 2rem;
+
+  @media @mobile {
+    margin: 0;
+  }
 }

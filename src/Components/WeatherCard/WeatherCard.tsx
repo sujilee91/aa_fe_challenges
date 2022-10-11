@@ -17,7 +17,7 @@ interface WeatherCardProps {
 const WeatherCard: React.FC<WeatherCardProps> = ({
   weatherData,
   loading,
-  error = 'Something went wrong!',
+  error,
 }) => {
   if (loading)
     return (
@@ -26,13 +26,21 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
       </div>
     )
 
-  if (error || (weatherData === null && !loading)) {
-    return <div className="error"> Sorry! {error}</div>
+  if (error) {
+    return (
+      <div className="wrapper">
+        <div className="error">
+          Sorry!
+          <br />
+          <span>Error: {error}</span>
+        </div>
+      </div>
+    )
   }
 
   return (
     <div className="wrapper">
-      {weatherData?.current ? (
+      {weatherData ? (
         <>
           <div className="box today">
             <span className="date">{weatherData.current.date}</span>
@@ -61,7 +69,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
             })}
           </div>
         </>
-      ) : null}
+      ) : (
+        <div>No Data!</div>
+      )}
     </div>
   )
 }
