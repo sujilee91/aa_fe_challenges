@@ -47,7 +47,7 @@ interface APIResponse {
 }
 
 const getURL = ({ lon, lat }) =>
-  URL + 'lat=' + lat + '&lon' + lon + '&cnd=32&units=metric&appid=' + API_KEY
+  URL + 'lat=' + lat + '&lon=' + lon + '&cnd=32&units=metric&appid=' + API_KEY
 
 /**
  * Because the API provides weather data for 5days every 3 hours,
