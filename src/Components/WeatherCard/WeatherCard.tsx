@@ -1,7 +1,8 @@
 import React from 'react'
 
 import './style.less'
-import WeatherIcon from '../WeatherIcon'
+
+import WeatherIcon from './WeatherIcon'
 
 import { WEATHER_ICON } from '../../const'
 import { WeatherDataType } from '../../types'
