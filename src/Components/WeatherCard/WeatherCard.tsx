@@ -1,9 +1,11 @@
 import React from 'react'
+
 import './style.less'
-import '../../styles.less'
+import WeatherIcon from '../WeatherIcon'
+
 import { WEATHER_ICON } from '../../const'
-import { WeatherIcon } from '../WeatherIcon'
 import { WeatherDataType } from '../../types'
+import '../../styles.less'
 
 interface WeatherCardProps {
   weatherData: WeatherDataType | null

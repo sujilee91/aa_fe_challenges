@@ -47,12 +47,12 @@ interface APIResponse {
 }
 
 const getURL = ({ lon, lat }) =>
-  URL + `lat=${lat}&lon=${lon}` + '&cnd=32&units=metric&appid=' + API_KEY
+  URL + 'lat=' + lat + '&lon' + lon + '&cnd=32&units=metric&appid=' + API_KEY
 
 /**
  * Because the API provides weather data for 5days every 3 hours,
  * When local time pass 9 p.m, will return next date data.
- * Means, if city data gets collected after 9pm, the top card will show the date rather than "Today"
+ * Means, if city data gets collected after 9pm, the top card will show the date rather than 'Today'
  * */
 const handleDataObject = (data: ListDataType) => {
   const weatherData = { ...data.weather[0] }

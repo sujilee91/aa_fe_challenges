@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { CITY_LIST } from './const'
+
+import { ReactComponent as WeatherSVGs } from './asstes/weathers.svg'
 import { CityTab, WeatherCard } from './components'
+import { CITY_LIST } from './const'
 import { useWeatherEffect } from './functions/fetchData'
 import './styles.less'
-import { ReactComponent as WeatherSVGs } from './asstes/weathers.svg'
 
 const App: React.FC = (): JSX.Element => {
   const [selectedCity, setSelectedCity] = useState(CITY_LIST[0])
