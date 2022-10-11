@@ -1,8 +1,18 @@
 import React from 'react'
 
-import { CityTabProps } from './types'
-import { CITY_LIST } from '../../const'
 import './style.less'
+import { CITY_LIST } from '../../const'
+
+interface SelectedCity {
+  name: string
+  lon: number
+  lat: number
+}
+
+interface CityTabProps {
+  selectedCity: SelectedCity
+  setSelectedCity: (selectedCity: SelectedCity) => void
+}
 
 const CityTab: React.FC<CityTabProps> = ({ selectedCity, setSelectedCity }) => {
   const isSelectedCity = (name: string) => name === selectedCity.name

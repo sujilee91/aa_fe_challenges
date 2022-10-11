@@ -3,7 +3,13 @@ import './style.less'
 import '../../styles.less'
 import { WEATHER_ICON } from '../../const'
 import { WeatherIcon } from '../WeatherIcon'
-import { WeatherCardProps } from './types'
+import { WeatherDataType } from '../../types'
+
+interface WeatherCardProps {
+  weatherData: WeatherDataType | null
+  loading: boolean
+  error: string | null
+}
 
 const WeatherCard: React.FC<WeatherCardProps> = ({
   weatherData,
@@ -17,12 +23,13 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
       </div>
     )
 
-  if (weatherData === null || error)
+  if (error || (weatherData === null && !loading)) {
     return <div className="error"> Sorry! {error}</div>
+  }
 
   return (
     <div className="wrapper">
-      {weatherData.current ? (
+      {weatherData?.current ? (
         <>
           <div className="box today">
             <span className="date">{weatherData.current.date}</span>

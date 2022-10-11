@@ -49,16 +49,18 @@ interface APIResponse {
 const getURL = ({ lon, lat }) =>
   URL + `lat=${lat}&lon=${lon}` + '&cnd=32&units=metric&appid=' + API_KEY
 
+/**
+ * Because the API provides weather data for 5days every 3 hours,
+ * When local time pass 9 p.m, will return next date data.
+ * Means, if city data gets collected after 9pm, the top card will show the date rather than "Today"
+ * */
 const handleDataObject = (data: ListDataType) => {
   const weatherData = { ...data.weather[0] }
-
-  const DAY_TO_SECOUNDS = 28800
-
   const setDate = (timestamp: number, date: string) => {
-    console.log(timestamp, 'ts')
-    var sec = moment(new Date().valueOf()).utc().unix()
+    const timeDate = new Date(timestamp * 1000)
+    const currentDate = new Date()
 
-    return timestamp - sec <= DAY_TO_SECOUNDS
+    return timeDate.toDateString() === currentDate.toDateString()
       ? 'Today'
       : moment(date).format('ddd')
   }
@@ -77,9 +79,14 @@ const handleFetchedData = (listdata: Array<ListDataType>) => {
     future: [],
   }
 
+  /**
+   * The reason of `i = i+8`:
+   * openweatherAPI provides weather data for 5 days, every 3 hours.
+   * In order to make 5 weather card for 5 days, I need to selectively collect data every 24 hours from the first weather data.( 3 hours * 8 = 24hrs)
+   * */
+
   for (let i = 0; i < listdata.length; i = i + 8) {
     if (i === 0) {
-      console.log(listdata[i])
       dateObj.current = handleDataObject(listdata[i])
     } else {
       dateObj.future.push(handleDataObject(listdata[i]))
@@ -92,7 +99,7 @@ const handleFetchedData = (listdata: Array<ListDataType>) => {
 export const useWeatherEffect = (selectedCity) => {
   const url = getURL(selectedCity)
   const [data, setData] = useState<WeatherDataType | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -100,7 +107,6 @@ export const useWeatherEffect = (selectedCity) => {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-          console.log(response, 'res')
           throw new Error(`Fetch data Fail : ${response.status}`)
         }
         return response.json()
