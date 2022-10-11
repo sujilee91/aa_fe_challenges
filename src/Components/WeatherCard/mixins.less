@@ -19,9 +19,11 @@
 .icon-size(@size: 7rem) {
   @media @large {
     height: @size;
+    width: @size;
   }
   @media @desktop {
     height: calc(@size / 1.8);
+    width: calc(@size / 1.8);
   }
   @media @tablet, @mobile {
     height: 7rem;

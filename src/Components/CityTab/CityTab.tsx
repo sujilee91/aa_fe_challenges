@@ -2,12 +2,7 @@ import React from 'react'
 
 import './style.less'
 import { CITY_LIST } from '../../const'
-
-interface SelectedCity {
-  name: string
-  lon: number
-  lat: number
-}
+import { SelectedCity } from '../../types'
 
 interface CityTabProps {
   selectedCity: SelectedCity

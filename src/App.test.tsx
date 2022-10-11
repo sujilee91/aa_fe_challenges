@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import App from './App'
 import { WeatherDataType } from './types'
-import { data_mock } from './mocks'
+import { DATA_MOCK } from './mocks'
 
 interface mockTypes {
   data: WeatherDataType | null
@@ -21,7 +21,7 @@ global.fetch = jest.fn(() =>
 ) as jest.Mock
 
 jest.mock('./functions/fetchData', () => ({
-  useWeatherEffect: () => {
+  useFetchWeatherData: () => {
     return mock
   },
 }))
@@ -92,7 +92,7 @@ describe('useWeaterEffect test', () => {
     expect(loadingElement).toBeInTheDocument()
   })
 
-  test('Should show error when useWeatherEffect returns error', async () => {
+  test('Should show error when useFetchWeatherData returns error', async () => {
     mock.loading = false
     mock.error = 'Fetch Failed'
 
@@ -103,7 +103,7 @@ describe('useWeaterEffect test', () => {
 
   test('Should show data correctly when no error and not loading ', async () => {
     mock.loading = false
-    mock.data = data_mock
+    mock.data = DATA_MOCK
     mock.error = null
 
     render(<App />)

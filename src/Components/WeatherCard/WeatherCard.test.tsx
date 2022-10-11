@@ -2,8 +2,10 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import WeatherCard from './WeatherCard'
-import { data_mock } from '../../mocks'
+
+import { DATA_MOCK } from '../../mocks'
 import { WeatherDataType } from '../../types'
+
 const renderComponent = (
   mockWeatherData: WeatherDataType | null,
   mockLoading: boolean,
@@ -26,19 +28,19 @@ describe('WeatherCard Unit Test', () => {
   })
 
   test('Should show loading if in loading state with data', async () => {
-    renderComponent(data_mock, true, null)
+    renderComponent(DATA_MOCK, true, null)
     const loadingElement = await screen.findByText('Loading...')
     expect(loadingElement).toBeInTheDocument()
   })
 
   test('Should show error if in error state with data', async () => {
-    renderComponent(data_mock, false, 'Fetch failed')
+    renderComponent(DATA_MOCK, false, 'Fetch failed')
     const errorElement = await screen.findByText('Error: Fetch failed')
     expect(errorElement).toBeInTheDocument()
   })
 
   test('Should show data with no loading and no error', async () => {
-    renderComponent(data_mock, false, null)
+    renderComponent(DATA_MOCK, false, null)
     const dataElement = await screen.findByText('Today')
     expect(dataElement).toBeInTheDocument()
   })

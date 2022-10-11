@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { URL, API_KEY } from '../const'
 import moment from 'moment'
 import { IconSet, WeatherDataType } from '../types'
+import { SelectedCity } from '../types'
 
 type ListDataType = {
   clouds: { all: number }
@@ -96,7 +97,7 @@ const handleFetchedData = (listdata: Array<ListDataType>) => {
   return dateObj
 }
 
-export const useWeatherEffect = (selectedCity) => {
+export const useFetchWeatherData = (selectedCity: SelectedCity) => {
   const url = getURL(selectedCity)
   const [data, setData] = useState<WeatherDataType | null>(null)
   const [loading, setLoading] = useState(false)

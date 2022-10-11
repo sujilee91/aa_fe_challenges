@@ -42,4 +42,8 @@ export type WeatherDataType = {
   future: Array<DateSet>
 }
 
-export {}
+export interface SelectedCity {
+  name: string
+  lon: number
+  lat: number
+}

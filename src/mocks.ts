@@ -1,6 +1,6 @@
 import { WeatherDataType } from './types'
 
-export const data_mock: WeatherDataType = {
+export const DATA_MOCK: WeatherDataType = {
   current: {
     date: 'Today',
     weather: 'Rain',

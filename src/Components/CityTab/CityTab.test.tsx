@@ -2,14 +2,9 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import WeatherCard from './CityTab'
-import { data_mock } from '../../mocks'
-import { CITY_LIST } from '../../const'
 
-interface SelectedCity {
-  name: string
-  lon: number
-  lat: number
-}
+import { CITY_LIST } from '../../const'
+import { SelectedCity } from '../../types'
 
 const renderComponent = (
   mockSelected: SelectedCity,
